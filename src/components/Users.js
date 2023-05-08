@@ -4,9 +4,15 @@ import User from './User';
 import classes from './Users.module.css';
 
 class Users extends Component {
-  // const [showUsers, setShowUsers] = useState(true);
   state = {
     showUsers: true
+  };
+
+  componentDidUpdate = () => {
+    console.log(this.props.users);
+    if (this.props.users.length === 0) {
+      throw new Error('No users');
+    }
   };
 
   toggleUsersHandler = () => {
